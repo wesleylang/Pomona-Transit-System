@@ -1,10 +1,10 @@
 /**
  *
  * Name :		Wesley Lang & Ning Li
- * Task :		Simple Array Sum
+ * Task :		Lab #4 - Pomona Transit System
  * Date : 		December 4,2016
  * Course : 	CS435 - Databases
- * Description: Given an array of N integers, can you find the sum of its elements?
+ * Description: Create pomona transit system that works.
  * 
  */	
 import java.sql.Connection;
@@ -15,12 +15,11 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 
-public class CS435JDBCLab {
+public class PomonaTransit {
 	
 	private static String dbHost = "localhost";
 	private static String dbName = "pomona_transit";
-	private static String dbUser = "JohnCena";
-	
+	private static String dbUser = "";
 	
 	public static void main(String[] args) {
 		menu();
@@ -28,15 +27,15 @@ public class CS435JDBCLab {
 	
 	public static void menu() {
 		System.out.println("What would you like to do?");
-		System.out.println("[1] Display schedule for all trips.");
-		System.out.println("[2] Edit the schedule");
-		System.out.println("[3] Display the stops of a given trip");
-		System.out.println("[4] Display the weekly schedule of a given driver and date");
-		System.out.println("[5] Add a driver");
-		System.out.println("[6] Add a bus");
-		System.out.println("[7] Delete a bus");
-		System.out.println("[8] Record data of a given trip");
-		System.out.println("[0] Exit");
+		System.out.println("1 - Display schedule for all trips.");
+		System.out.println("2 - Edit the schedule");
+		System.out.println("3 - Display the stops of a given trip");
+		System.out.println("4 - Display the weekly schedule of a given driver and date");
+		System.out.println("5 - Add a driver");
+		System.out.println("6 - Add a bus");
+		System.out.println("7 - Delete a bus");
+		System.out.println("8 - Record data of a given trip");
+		System.out.println("0 - Exit");
 		
 		Scanner in = new Scanner(System.in);
 		int input = in.nextInt();
@@ -60,7 +59,7 @@ public class CS435JDBCLab {
 			break;
 		case 8: recordData();	
 			break;
-		default: System.out.println("Invalid input. Try again.");
+		default: System.out.println("Invalid input. Please try again.");
 			menu();
 			break;
 		}
@@ -85,8 +84,7 @@ public class CS435JDBCLab {
 		
 		String query;
 		query = "SELECT t.TripNumber, t.StartLocationName, t.DestinationName, o.Date"
-				+ ", o.ScheduledStartTime, o.ScheduledArrivalTime, o.DriverName, "
-				+ "o.BusId "
+				+ ", o.ScheduledStartTime, o.ScheduledArrivalTime, o.DriverName, o.BusId "
 				+ "FROM Trip t, TripOffering o "
 				+ "WHERE t.TripNumber = o.TripNumber AND "
 				+ "t.StartLocationName LIKE '" + startLocationName + "' AND "
@@ -99,10 +97,10 @@ public class CS435JDBCLab {
 	
 	private static void editSchedule() {
 		System.out.println("Schedule Editing Options: ");
-		System.out.println("[1] Delete a trip offering specified by Trip#, Date, and ScheduledStartTime.");
-		System.out.println("[2] Add a set of trip offerings.");
-		System.out.println("[3] Change the driver for a given trip.");
-		System.out.println("[4] Change the bus for a given trip.");
+		System.out.println("1 - Delete a trip offering specified by Trip#, Date, and ScheduledStartTime.");
+		System.out.println("2 - Add a set of trip offerings.");
+		System.out.println("3 - Change the driver for a given trip.");
+		System.out.println("4 - Change the bus for a given trip.");
 		
 		Scanner in = new Scanner(System.in);
 		int input = in.nextInt();
