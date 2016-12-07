@@ -39,10 +39,10 @@ public class PomonaTransit {
 		System.out.println("7 - Delete a bus");
 		System.out.println("8 - Record data of a given trip");
 		System.out.println("0 - Exit program");
-		System.out.println();
 		
 		Scanner in = new Scanner(System.in);
 		int input = in.nextInt();
+		System.out.println();
 		
 		//call functions accordingly to user's input then keep the ask again unless
 		//user enters 0 to exit the program
@@ -51,43 +51,35 @@ public class PomonaTransit {
 		}
 		else if(input == 1) { 
 			displaySchedule();
-			System.out.println();
-			menu();
+
 		}
 		else if(input == 2){ 
 			editSchedule();
-			System.out.println();
-			menu();
+
 		}
 		else if(input == 3){ 
 			displayStops();
-			System.out.println();
-			menu();
+
 		}
 		else if(input == 4){ 
 			displayWeeklySchedule();
-			System.out.println();
-			menu();
+
 		}
 		else if(input == 5){ 
 			addDriver();
-			System.out.println();
-			menu();
+
 		}
 		else if(input == 6){ 
 			addBus();
-			System.out.println();
-			menu();
+
 		}
 		else if(input == 7){ 
 			deleteBus();
-			System.out.println();
-			menu();
+
 		}
 		else if(input == 8){ 
 			recordData();
-			System.out.println();
-			menu();
+
 		}
 		else{
 			System.out.println("Invalid input. Please try again.");
@@ -327,7 +319,7 @@ public class PomonaTransit {
 
 		System.out.print("DriverName: ");	
 		driverName = in.next();
-		System.out.print("DriverTelephoneNumber (Please follow XXX-XXXX format: ");
+		System.out.print("DriverTelephoneNumber (Please follow XXX-XXXX format): ");
 		driverTelephoneNumber = in.next();
 		sqlVar = "INSERT INTO DRIVER VALUES('" + driverName + "', '" + driverTelephoneNumber + "');";
 		sqlHandler(sqlVar);
