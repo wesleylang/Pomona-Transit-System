@@ -16,10 +16,10 @@ public class PomonaTransit {
 	
 	//static reference to itself
 	private static PomonaTransit instance = new PomonaTransit();
-	 
-	private static final String URL = "jdbc:mysql://localhost:3306";
+
+	private static final String URL = "jdbc:mysql://localhost:3306/Lab4?autoReconnect=true&useSSL=false";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "";
+	private static final String PASSWORD = "root";
 	
 	public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver"; 
 	
@@ -434,7 +434,7 @@ public class PomonaTransit {
 	
 	private static void sqlHandler(String sqlVar){
 		try{
-			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
 			//Load the MySQL Connector / J classes
 			Class.forName(DRIVER_CLASS).newInstance();
 			
