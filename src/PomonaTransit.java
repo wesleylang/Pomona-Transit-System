@@ -38,6 +38,7 @@ public class PomonaTransit {
 		System.out.println("7 - Delete a bus");
 		System.out.println("8 - Record data of a given trip");
 		System.out.println("0 - Exit");
+		System.out.println();
 		
 		Scanner in = new Scanner(System.in);
 		int input = in.nextInt();
