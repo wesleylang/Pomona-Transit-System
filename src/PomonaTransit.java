@@ -45,21 +45,45 @@ public class PomonaTransit {
 		switch(input) {
 		case 0: System.exit(0);
 			break;
-		case 1: displaySchedule();
+		case 1: 
+			displaySchedule();
+			System.out.println();
+			menu();
 			break;
-		case 2: editSchedule();
+		case 2: 
+			editSchedule();
+			System.out.println();
+			menu();
 			break;
-		case 3: displayStops();
+		case 3: 
+			displayStops();
+			System.out.println();
+			menu();
 			break;
-		case 4: displayWeeklySchedule();
+		case 4: 
+			displayWeeklySchedule();
+			System.out.println();
+			menu();
 			break;
-		case 5: addDriver();
+		case 5: 
+			addDriver();
+			System.out.println();
+			menu();
 			break;
-		case 6: addBus();
+		case 6: 
+			addBus();
+			System.out.println();
+			menu();
 			break;
-		case 7: deleteBus();
+		case 7: 
+			deleteBus();
+			System.out.println();
+			menu();
 			break;
-		case 8: recordData();	
+		case 8: 
+			recordData();
+			System.out.println();
+			menu();
 			break;
 		default: System.out.println("Invalid input. Please try again.");
 			menu();
