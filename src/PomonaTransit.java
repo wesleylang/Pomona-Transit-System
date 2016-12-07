@@ -6,20 +6,22 @@
  * Course : 	CS435 - Databases
  * Description: Create pomona transit system that works.
  * 
- */	
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+ */
+
+import java.sql.*;
 import java.util.Scanner;
 
 
 public class PomonaTransit {
 	
-	private static String dbHost = "localhost";
-	private static String dbName = "pomona_transit";
-	private static String dbUser = "";
+	//static reference to itself
+	private static PomonaTransit instance = new PomonaTransit();
+	 
+	private static final String URL = "jdbc:mysql://localhost:3306";
+	private static final String USERNAME = "root";
+	private static final String PASSWORD = "";
+	
+	public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver"; 
 	
 	public static void main(String[] args) {
 		menu();
@@ -395,13 +397,13 @@ public class PomonaTransit {
 		//gets the scheduledArrival and stopNumber
 		try{
 			//Load the MySQL Connector / J classes
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName(DRIVER_CLASS).newInstance();
 			
-			//Set connect string to local MySQL database, user is JohnCena
-			String connString = "jdbc:mysql://" + dbHost + "/" + dbName + 
-					"?user=" + dbUser + "&password=doot"  + "&useSSL=false";
+			//Set connect string to local MySQL database
+			String connString = URL + "/" + 
+					"?user=" + USERNAME + "&password=" + PASSWORD + "&useSSL=false";
 			
-			Connection conn = DriverManager.getConnection(connString);
+			Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			Statement stmt = conn.createStatement();
 
 			ResultSet rs = stmt.executeQuery(query);
@@ -432,15 +434,16 @@ public class PomonaTransit {
 	
 	private static void sqlHandler(String sqlVar){
 		try{
+			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			//Load the MySQL Connector / J classes
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName(DRIVER_CLASS).newInstance();
 			
-			//Set connect string to local MySQL database, user is JohnCena
-			String connString = "jdbc:mysql://" + dbHost + "/" + dbName + 
-					"?user=" + dbUser + "&password=doot"  + "&useSSL=false";
+			//Set connect string to local MySQL database
+			String connString = URL + "/" + 
+					"?user=" + USERNAME + "&password=" + PASSWORD + "&useSSL=false";
 			
 			System.out.println("Trying connection with " + connString);
-			Connection conn = DriverManager.getConnection(connString);
+			Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			
 			//Get result set
 			Statement stmt = conn.createStatement();
@@ -457,14 +460,14 @@ public class PomonaTransit {
 	private static void sqlDisplayer(String query){
 		try{
 			//Load the MySQL Connector / J classes
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName(DRIVER_CLASS).newInstance();
 			
-			//Set connect string to local MySQL database, user is JohnCena
-			String connString = "jdbc:mysql://" + dbHost + "/" + dbName + 
-					"?user=" + dbUser + "&password=doot"  + "&useSSL=false";
+			//Set connect string to local MySQL database
+			String connString = URL + "/" + 
+					"?user=" + USERNAME + "&password=" + PASSWORD + "&useSSL=false";
 			
 			System.out.println("Trying connection with " + connString);
-			Connection conn = DriverManager.getConnection(connString);
+			Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			Statement stmt = conn.createStatement();
 
 			String select = query;
